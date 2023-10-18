@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS5 vs Xbox Series X</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-content {
+            flex: 1;
+            min-width: 100%;
+            text-align: center;
+            padding: 50px;
+            color: #fff;
+        }
+
+        .ps5 {
+            background-color: #007bff;
+        }
+
+        .xbox {
+            background-color: #28a745;
+        }
+
+        .slider-content h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .slider-content p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .slider-content a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #fff;
+            text-decoration: none;
+            color: #000;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .slider-content a:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slider" id="slider">
+            <div class="slider-content ps5">
+                <h1>PlayStation 5</h1>
+                <p>Discover the power of PS5.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="slider-content xbox">
+                <h1>Xbox Series X</h1>
+                <p>Unleash the true 4K gaming.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('slider');
+            let isMouseDown = false;
+
+            slider.addEventListener('mousedown', function(e) {
+                isMouseDown = true;
+                slider.classList.add('active');
+            });
+
+            document.addEventListener('mouseup', function() {
+                isMouseDown = false;
+                slider.classList.remove('active');
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isMouseDown) return;
+                const x = e.clientX / window.innerWidth * 100;
+                slider.style.transform = `translateX(${x}%)`;
+            });
+        });
+    </script>
+</body>
+</html>
